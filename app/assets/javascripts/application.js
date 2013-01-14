@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require hamlcoffee
 //= require todomvc_rails
 //= require_tree ../templates
 //= require_tree ./models
