@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'backbone-on-rails'
 gem 'haml'
 gem 'haml-rails'
+gem 'rabl'
 
 
 # Gems used only for assets and not required
@@ -25,6 +26,23 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
+  gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
+  gem 'ruby-debug19'
+  gem 'guard-jasmine'
+  gem 'jasminerice'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'accept_values_for'
+end
+
+
 group :production do
   gem 'pg'
 end

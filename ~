@@ -1,0 +1,17 @@
+class TodomvcRails.Views.TodosIndex extends Backbone.View
+
+  template: JST['todos/index']
+
+  initialize: ->
+    _.bindAll(@, "addAll", "addOne")
+    @todos = new TodomvcRails.Collections.Todos
+    @todos.on("reset", @allAll)
+    @todos.fetch()
+
+  addAll: ->
+    console.log "add All called"
+    console.log todos.length
+
+  addOne: ->
+    console.log "nothing to do here "
+    
