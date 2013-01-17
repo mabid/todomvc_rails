@@ -13,7 +13,7 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
     if ( e.which != ENTER_KEY || !@$input.val().trim() )
       return
 
-    TodomvcRails.Todos.create( @newAttributes() )
+    TodomvcRails.Todos.create( @newAttributes(), wait: true )
     @$input.val('')
 
   newAttributes: ->
@@ -63,6 +63,9 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
         that.$list.find("li span").addClass "arrow"
         that.$list.find("li button").addClass "destroy"
         ui.item.removeClass "dragging"
+      stop: (e, ui)->
+        sortData = that.$list.sortable("serialize")
+        TodomvcRails.Todos.saveOrder(sortData)
 
     TodomvcRails.Todos.fetch()
 
@@ -101,7 +104,7 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
     TodomvcRails.Todos.each(@addOne, @)
 
   addOne: (todo)->
-    view = new TodomvcRails.Views.TodoView({ model: todo })
+    view = new TodomvcRails.Views.TodoView({ model: todo})
     @$('#todo-list').append( view.render().el )
 
   clearCompleted: ->

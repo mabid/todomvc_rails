@@ -13,7 +13,9 @@ TodomvcRails::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :todos, defaults: {format: :json}
+  resources :todos, defaults: {format: :json} do
+    put :save_order, on: :collection
+  end
 
   # Sample resource route with options:
   #   resources :products do

@@ -15,6 +15,7 @@ class TodomvcRails.Views.TodoView extends Backbone.View
     @listenTo(@model, 'change', @render)
     @listenTo(@model, 'destroy', @remove)
     @listenTo(@model, 'visible', @toggleVisible)
+    @$el.attr("id", "todo_#{@model.get('id')}")
 
   render: ->
     @$el.html( @template(todo: @model) )

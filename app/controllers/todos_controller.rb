@@ -26,4 +26,13 @@ class TodosController < ApplicationController
     render nothing: true
   end
 
+  def save_order
+    ids = params[:todo]
+    ids.each_with_index do |id, index|
+      todo = Todo.find(id)
+      todo.update_attribute(:position, index) if todo
+    end
+    render nothing: true
+  end
+
 end
