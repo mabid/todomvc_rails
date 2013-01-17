@@ -287,7 +287,7 @@ label[for='toggle-all'] {
 	content: '✖';
 }
 
-#todo-list li:hover .destroy {
+#todo-list li:hover .destroy_btn {
 	display: block;
 }
 

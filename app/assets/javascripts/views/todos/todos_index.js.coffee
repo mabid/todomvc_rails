@@ -55,13 +55,13 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
       scorll: true
       start: (e, ui) ->
         that.$list.find("li span").removeClass "arrow"
-        that.$list.find("li button").removeClass "destroy"
+        that.$list.find("li button").removeClass "destroy_btn"
         ui.item.addClass "dragging"
         ui.item.show()
 
       beforeStop: (e, ui) ->
         that.$list.find("li span").addClass "arrow"
-        that.$list.find("li button").addClass "destroy"
+        that.$list.find("li button").addClass "destroy_btn"
         ui.item.removeClass "dragging"
       stop: (e, ui)->
         sortData = that.$list.sortable("serialize")
