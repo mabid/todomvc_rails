@@ -7,7 +7,7 @@
     ="#{@remaining} #{itemz} left"
 %ul#filters
   %li
-    %a.selected{href:""}All
+    %a.selected{href:"#/"}All
   %li
     %a{href:"#/active"}Active
   %li

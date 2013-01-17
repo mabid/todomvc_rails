@@ -30,6 +30,7 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
     @$input  = @$('#new-todo')
     @$footer = @$('#footer')
     @$main   = @$('#main')
+    @$list= @$('#todo-list')
 
     TodomvcRails.Todos = TodomvcRails.Todos
 
@@ -38,6 +39,30 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
     @listenTo(TodomvcRails.Todos, 'change:completed', @filterOne)
     @listenTo(TodomvcRails.Todos, 'filter', @filterAll)
     @listenTo(TodomvcRails.Todos, 'all', @render)
+
+    that = @
+
+    @$list.sortable
+      containment:"#main"
+      axis: "y"
+      grid: [61, 61]
+      handle: "span"
+      helper: (e, ele) ->
+        $ "<div class='line'></div>"
+      tolerance: "pointer"
+      placeholder: "empty"
+      scrollSensitivity: 30
+      scorll: true
+      start: (e, ui) ->
+        that.$list.find("li span").removeClass "arrow"
+        that.$list.find("li button").removeClass "destroy"
+        ui.item.addClass "dragging"
+        ui.item.show()
+
+      beforeStop: (e, ui) ->
+        that.$list.find("li span").addClass "arrow"
+        that.$list.find("li button").addClass "destroy"
+        ui.item.removeClass "dragging"
 
     TodomvcRails.Todos.fetch()
 
@@ -62,6 +87,7 @@ class TodomvcRails.Views.TodosIndex extends Backbone.View
       @$footer.hide()
 
     this.allCheckbox.checked = !remaining
+    @$list.sortable("refresh")
 
     
   filterOne: (todo )->

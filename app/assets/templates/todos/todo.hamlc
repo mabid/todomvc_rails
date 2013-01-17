@@ -5,5 +5,6 @@
     %input.toggle{type:"checkbox"}
   %label
     =@todo.get('text')
+  %span.arrow
   %button.destroy
 %input.edit{value:"#{@todo.get('text')}"}
