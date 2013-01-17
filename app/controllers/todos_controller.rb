@@ -32,7 +32,8 @@ class TodosController < ApplicationController
       todo = Todo.find(id)
       todo.update_attribute(:position, index) if todo
     end
-    render nothing: true
+    @todos = Todo.all
+    render action: :index
   end
 
 end

@@ -26,11 +26,12 @@ class TodomvcRails.Collections.Todos extends Backbone.Collection
     "todos/save_order"
 
   saveOrder:(sort_order) ->
+    that = @
     $.ajax @sortUrl(),
       type: 'put'
       data: sort_order
       dataType: 'JSON'
       error: (joinqXHR, textStatus, errorThrown) ->
       success: (data, textStatus, jqXHR) ->
-        true
+        that.update(data)
     @
